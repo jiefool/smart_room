@@ -111,35 +111,38 @@ class Dashboard():
             self.master.columnconfigure(self.rows, weight=1)
             self.rows += 1
 
+
+        self.override_btn = Button(self.master, text='Override System', command=self.override)
+        self.override_btn.grid(row=0, column=2, sticky='NESW')
+
         self.login_text = StringVar()
-        self.login_label = Label(self.master, textvariable=self.login_text)
-        self.login_label.grid(row=1, column=5, sticky='NESW')
+        self.login_label = Label(self.master, text='Lights Control')
+        self.login_label.grid(row=1, column=2, sticky='NESW')
         self.login_text.set("Dashboard") 
 
 
-        self.override_btn = Button(self.master, text='Override', command=self.override)
-        self.override_btn.grid(row=6, column=2, sticky='NESW')
+        
 
         self.light0_btn = Button(self.master, text='Light 1', command=lambda:self.light_control(0) )
-        self.light0_btn.grid(row=6, column=3, sticky='NESW')
+        self.light0_btn.grid(row=6, column=0, sticky='NESW')
 
         self.light1_btn = Button(self.master, text='Light 2', command=lambda:self.light_control(1))
-        self.light1_btn.grid(row=6, column=4, sticky='NESW')
+        self.light1_btn.grid(row=6, column=1, sticky='NESW')
 
         self.light2_btn = Button(self.master, text='Light 3', command=lambda:self.light_control(2))
-        self.light2_btn.grid(row=6, column=5, sticky='NESW')
+        self.light2_btn.grid(row=6, column=2, sticky='NESW')
 
         self.light3_btn = Button(self.master, text='Light 4', command=lambda:self.light_control(3))
-        self.light3_btn.grid(row=6, column=6, sticky='NESW')
+        self.light3_btn.grid(row=6, column=3, sticky='NESW')
 
         self.lightAll_btn = Button(self.master, text='Light All', command=lambda:self.light_control(4))
-        self.lightAll_btn.grid(row=6, column=7, sticky='NESW')
+        self.lightAll_btn.grid(row=6, column=4, sticky='NESW')
 
 
 
         # adds login button and defines its properties
         self.back_btn = Button(self.master, text='Back', command=self.back)
-        self.back_btn.grid(row=7, column=5, sticky='NESW')
+        self.back_btn.grid(row=7, column=2, sticky='NESW')
 
     def light_control(self, light):
         if self.lt0 and self.lt1 and self.lt2 and self.lt3:
