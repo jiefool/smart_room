@@ -4,7 +4,6 @@ from Tkinter import *   ## notice capitalized T in Tkinter
 import time
 import serial
 
-
 class Login():
 
     def __init__(self, master):
@@ -112,33 +111,42 @@ class Dashboard():
             self.rows += 1
 
 
-        self.override_btn = Button(self.master, text='Override System', command=self.override)
-        self.override_btn.grid(row=0, column=2, sticky='NESW')
-
-        self.login_label = Label(self.master, text='Lights Control')
-        self.login_label.grid(row=1, column=2, sticky='NESW')
+        self.labelframe0 = LabelFrame(self.master, text="Override System")
+        self.labelframe0.grid(row=1, column=1, sticky='NESW')
+        self.labelframe0.columnconfigure(1, weight=1)
 
 
-        self.light0_btn = Button(self.master, text='Light 1', command=lambda:self.light_control(0) )
-        self.light0_btn.grid(row=6, column=0, sticky='NESW')
+        self.override_btn = Button(self.labelframe0, text='Override', command=self.override)
+        self.override_btn.grid(row=0, column=0, columnspan=2, sticky='NESW')
 
-        self.light1_btn = Button(self.master, text='Light 2', command=lambda:self.light_control(1))
-        self.light1_btn.grid(row=6, column=1, sticky='NESW')
+        self.labelframe1 = LabelFrame(self.master, text="Lights Control")
+        self.labelframe1.grid(row=2, column=1, sticky='NESW')
+        self.labelframe1.columnconfigure(1, weight=1)
 
-        self.light2_btn = Button(self.master, text='Light 3', command=lambda:self.light_control(2))
-        self.light2_btn.grid(row=6, column=2, sticky='NESW')
+        # self.login_label = Label(self.labelframe, text='Lights Control')
+        # self.login_label.grid(row=2, column=0, sticky='NESW')
 
-        self.light3_btn = Button(self.master, text='Light 4', command=lambda:self.light_control(3))
-        self.light3_btn.grid(row=6, column=3, sticky='NESW')
 
-        self.lightAll_btn = Button(self.master, text='Light All', command=lambda:self.light_control(4))
-        self.lightAll_btn.grid(row=6, column=4, sticky='NESW')
+        self.light0_btn = Button(self.labelframe1, text='Light 1', command=lambda:self.light_control(0) )
+        self.light0_btn.grid(row=0, column=0, columnspan=2,sticky='NESW')
+
+        self.light1_btn = Button(self.labelframe1, text='Light 2', command=lambda:self.light_control(1))
+        self.light1_btn.grid(row=1, column=0, columnspan=2, sticky='NESW')
+
+        self.light2_btn = Button(self.labelframe1, text='Light 3', command=lambda:self.light_control(2))
+        self.light2_btn.grid(row=2, column=0, columnspan=2, sticky='NESW')
+
+        self.light3_btn = Button(self.labelframe1, text='Light 4', command=lambda:self.light_control(3))
+        self.light3_btn.grid(row=3, column=0, columnspan=2, sticky='NESW')
+
+        self.lightAll_btn = Button(self.labelframe1, text='All Lights', command=lambda:self.light_control(4))
+        self.lightAll_btn.grid(row=4, column=0, columnspan=2, sticky='NESW')
 
 
 
         # adds login button and defines its properties
         self.back_btn = Button(self.master, text='Back', command=self.back)
-        self.back_btn.grid(row=7, column=2, sticky='NESW')
+        self.back_btn.grid(row=8, column=4, sticky='NESW')
 
     def light_control(self, light):
         if self.lt0 and self.lt1 and self.lt2 and self.lt3:
