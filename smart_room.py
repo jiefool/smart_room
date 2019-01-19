@@ -133,13 +133,13 @@ class Dashboard():
         self.light3_btn.grid(row=6, column=6, sticky='NESW')
 
         self.lightAll_btn = Button(self.master, text='Light All', command=self.light_control(4))
-        self.lightAll_btn.grid(row=6, column=6, sticky='NESW')
+        self.lightAll_btn.grid(row=6, column=7, sticky='NESW')
 
 
 
         # adds login button and defines its properties
         self.back_btn = Button(self.master, text='Back', command=self.back)
-        self.back_btn.grid(row=6, column=5, sticky='NESW')
+        self.back_btn.grid(row=7, column=5, sticky='NESW')
 
     def light_control(self, light):
         #light 1
