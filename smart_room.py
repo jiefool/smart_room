@@ -176,9 +176,17 @@ class Dashboard():
 
         #light all
         elif light == 4 and self.lt4 == False:
+            self.lt0 = True
+            self.lt1 = True
+            self.lt2 = True
+            self.lt3 = True
             self.lt4 = True
             self.send_command("LT41")
         elif light == 4 and self.lt4 == True:
+            self.lt0 = False
+            self.lt1 = False
+            self.lt2 = False
+            self.lt3 = False
             self.lt4 = False
             self.send_command("LT40")
 
