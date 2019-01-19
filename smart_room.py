@@ -97,6 +97,7 @@ class Dashboard():
         self.lt1 = False
         self.lt2 = False
         self.lt3 = False
+        self.overridest = False
 
 
         self.master=master
