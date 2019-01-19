@@ -120,19 +120,19 @@ class Dashboard():
         self.override_btn = Button(self.master, text='Override', command=self.override)
         self.override_btn.grid(row=6, column=2, sticky='NESW')
 
-        self.light0_btn = Button(self.master, text='Light 1', command=self.light_control(0) )
+        self.light0_btn = Button(self.master, text='Light 1', command=lambda:self.light_control(0) )
         self.light0_btn.grid(row=6, column=3, sticky='NESW')
 
-        self.light1_btn = Button(self.master, text='Light 2', command=self.light_control(1))
+        self.light1_btn = Button(self.master, text='Light 2', command=lambda:self.light_control(1))
         self.light1_btn.grid(row=6, column=4, sticky='NESW')
 
-        self.light2_btn = Button(self.master, text='Light 3', command=self.light_control(2))
+        self.light2_btn = Button(self.master, text='Light 3', command=lambda:self.light_control(2))
         self.light2_btn.grid(row=6, column=5, sticky='NESW')
 
-        self.light3_btn = Button(self.master, text='Light 4', command=self.light_control(3))
+        self.light3_btn = Button(self.master, text='Light 4', command=lambda:self.light_control(3))
         self.light3_btn.grid(row=6, column=6, sticky='NESW')
 
-        self.lightAll_btn = Button(self.master, text='Light All', command=self.light_control(4))
+        self.lightAll_btn = Button(self.master, text='Light All', command=lambda:self.light_control(4))
         self.lightAll_btn.grid(row=6, column=7, sticky='NESW')
 
 
