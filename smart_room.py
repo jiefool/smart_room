@@ -140,42 +140,42 @@ class Dashboard():
     def light_control(self, light):
         #light 1
         if light == 0 and self.lt0 == False:
-            lt0 = True
+            self.lt0 = True
             self.send_command("LT01")
         if light == 0 and self.lt0 == True:
-            lt0 = False
+            self.lt0 = False
             self.send_command("LT00")
 
         #light 2
         if light == 1 and self.lt1 == False:
-            lt0 = True
+            self.lt0 = True
             self.send_command("LT11")
         if light == 1 and self.lt1 == True:
-            lt0 = False
+            self.lt0 = False
             self.send_command("LT10")
 
         #light 3
         if light == 2 and self.lt2 == False:
-            lt0 = True
+            self.lt0 = True
             self.send_command("LT21")
         if light == 2 and self.lt2 == True:
-            lt0 = False
+            self.lt0 = False
             self.send_command("LT20")
 
         #light 4
         if light == 3 and self.lt3 == False:
-            lt0 = True
+            self.lt0 = True
             self.send_command("LT31")
         if light == 3 and self.lt3 == True:
-            lt0 = False
+            self.lt0 = False
             self.send_command("LT30")
 
         #light all
         if light == 4 and self.lt4 == False:
-            lt0 = True
+            self.lt0 = True
             self.send_command("LT41")
         if light == 4 and self.lt4 == True:
-            lt0 = False
+            self.lt0 = False
             self.send_command("LT40")
 
     def override(self):
