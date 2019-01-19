@@ -142,6 +142,12 @@ class Dashboard():
         self.back_btn.grid(row=7, column=5, sticky='NESW')
 
     def light_control(self, light):
+        if lt0 and lt1 and lt2 and lt3:
+            lt4 = True
+        else:
+            lt4 = False
+
+
         #light 1
         if light == 0 and self.lt0 == False:
             self.lt0 = True
