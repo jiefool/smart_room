@@ -146,39 +146,39 @@ class Dashboard():
         if light == 0 and self.lt0 == False:
             self.lt0 = True
             self.send_command("LT01")
-        if light == 0 and self.lt0 == True:
+        elif light == 0 and self.lt0 == True:
             self.lt0 = False
             self.send_command("LT00")
 
         #light 2
-        if light == 1 and self.lt1 == False:
+        elif light == 1 and self.lt1 == False:
             self.lt1 = True
             self.send_command("LT11")
-        if light == 1 and self.lt1 == True:
+        elif light == 1 and self.lt1 == True:
             self.lt1 = False
             self.send_command("LT10")
 
         #light 3
-        if light == 2 and self.lt2 == False:
+        elif light == 2 and self.lt2 == False:
             self.lt2 = True
             self.send_command("LT21")
-        if light == 2 and self.lt2 == True:
+        elif light == 2 and self.lt2 == True:
             self.lt2 = False
             self.send_command("LT20")
 
         #light 4
-        if light == 3 and self.lt3 == False:
+        elif light == 3 and self.lt3 == False:
             self.lt3 = True
             self.send_command("LT31")
-        if light == 3 and self.lt3 == True:
+        elif light == 3 and self.lt3 == True:
             self.lt3 = False
             self.send_command("LT30")
 
         #light all
-        if light == 4 and self.lt4 == False:
+        elif light == 4 and self.lt4 == False:
             self.lt4 = True
             self.send_command("LT41")
-        if light == 4 and self.lt4 == True:
+        elif light == 4 and self.lt4 == True:
             self.lt4 = False
             self.send_command("LT40")
 
