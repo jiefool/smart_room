@@ -180,11 +180,11 @@ class Dashboard():
 
     def override(self):
         if (self.overridest):
-            send_command("OV0")
-            overridest=False
+            self.send_command("OV0")
+            self.overridest=False
         else:
-            send_command("OV1")
-            overridest=True
+            self.send_command("OV1")
+            self.overridest=True
 
     def send_command(self, command):
         ser.write(command)
