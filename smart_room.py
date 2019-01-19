@@ -115,13 +115,9 @@ class Dashboard():
         self.override_btn = Button(self.master, text='Override System', command=self.override)
         self.override_btn.grid(row=0, column=2, sticky='NESW')
 
-        self.login_text = StringVar()
         self.login_label = Label(self.master, text='Lights Control')
         self.login_label.grid(row=1, column=2, sticky='NESW')
-        self.login_text.set("Dashboard") 
 
-
-        
 
         self.light0_btn = Button(self.master, text='Light 1', command=lambda:self.light_control(0) )
         self.light0_btn.grid(row=6, column=0, sticky='NESW')
