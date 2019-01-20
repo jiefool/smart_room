@@ -304,7 +304,7 @@ class Dashboard(tk.Tk):
         self.after(100, self.process_serial)
 
     def process_serial_data(self, serial_data):
-        print "processing serial data"
+        print serial_data
 
 def main():
     app = Login()
