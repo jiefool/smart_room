@@ -125,7 +125,7 @@ class Dashboard(tk.Tk):
 
 
         self.labelframe0 = tk.LabelFrame(self, text="Override System")
-        self.labelframe0.grid(row=1, column=1, sticky='NESW')
+        self.labelframe0.grid(row=1, column=1, columnspan=2, sticky='NESW')
         self.labelframe0.columnconfigure(0, weight=1)
         self.labelframe0.rowconfigure(0, weight=1)
 
@@ -136,7 +136,7 @@ class Dashboard(tk.Tk):
 
 
         self.labelframe1 = tk.LabelFrame(self, text="Lights Control")
-        self.labelframe1.grid(row=2, column=1, rowspan=2, sticky='NESW')
+        self.labelframe1.grid(row=2, column=1, rowspan=2, columnspan=2, sticky='NESW')
         self.labelframe1.columnconfigure(0, weight=1)
         self.labelframe1.columnconfigure(1, weight=1)
         self.labelframe1.rowconfigure(0, weight=1)
@@ -165,7 +165,7 @@ class Dashboard(tk.Tk):
 
 
         self.labelframe2 = tk.LabelFrame(self, text="Thermal Sensor Data")
-        self.labelframe2.grid(row=1, column=2, rowspan=2, sticky='NESW')
+        self.labelframe2.grid(row=1, column=2, rowspan=2, columnspan=2, sticky='NESW')
 
         self.index = 0
         while self.index < 4:
@@ -191,13 +191,25 @@ class Dashboard(tk.Tk):
         self.irms_text = tk.StringVar()
         self.irms_label = tk.Label(self.labelframe3, textvariable=self.irms_text)
         self.irms_label.grid(row=0, column=0, sticky='NESW')
+        self.irms_text.set("123")
+
+
+        self.labelframe4 = tk.LabelFrame(self, text="Power(Watt)")
+        self.labelframe4.grid(row=3, column=3, sticky='NESW')
+        self.labelframe4.columnconfigure(0, weight=1)
+        self.labelframe4.rowconfigure(0, weight=1)
+
+        self.power_text = tk.StringVar()
+        self.power_label = tk.Label(self.labelframe3, textvariable=self.power_text)
+        self.power_label.grid(row=0, column=0, sticky='NESW')
+        self.power_text.set("123")
 
 
 
 
         # adds login button and defines its properties
         self.back_btn = tk.Button(self, text='Back', command=self.back)
-        self.back_btn.grid(row=8, column=4, sticky='NESW')
+        self.back_btn.grid(row=5, column=1, columnspan=3 sticky='NESW')
 
 
         self.queue = Queue.Queue()
