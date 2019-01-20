@@ -302,7 +302,7 @@ class Dashboard(tk.Tk):
                     self.power_text.set(self.data_split[1])
                     self.sensor_data = self.data_split[2].split(",")
 
-                    for widget in labelframe2.winfo_children():
+                    for widget in self.labelframe2.winfo_children():
                         widget.destroy()
 
 
