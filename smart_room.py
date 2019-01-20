@@ -304,7 +304,22 @@ class Dashboard(tk.Tk):
         self.after(100, self.process_serial)
 
     def process_serial_data(self, serial_data):
-        print serial_data
+        self.data_split=serial_data.split("|")
+        self.irms = data_split[0]
+        self.power = data_split[1]
+        self.thermal = data_split[2]
+
+        print self.irms
+        print self.power
+        print self.thermal
+        
+        self.k = 1
+        for self.i in  range(4):
+            for self.j in  range(4):
+                tk.Button(self.labelframe2, text=str(self.k)).grid(row=int(self.i), column = int(self.j))
+                self.j = self.j + 1
+                self.k = self.k +1 
+            self.i = self.i + 1
 
 def main():
     app = Login()
