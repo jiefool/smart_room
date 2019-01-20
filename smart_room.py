@@ -209,7 +209,7 @@ class Dashboard(tk.Tk):
 
         # adds login button and defines its properties
         self.back_btn = tk.Button(self, text='Back', command=self.back)
-        self.back_btn.grid(row=5, column=1, columnspan=3, sticky='NESW')
+        self.back_btn.grid(row=5, column=1, columnspan=4, sticky='NESW')
 
 
         self.queue = Queue.Queue()
