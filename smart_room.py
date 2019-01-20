@@ -13,8 +13,9 @@ class SerialThread(threading.Thread):
         self.queue = queue
     def run(self):
         while True:
-            text = ser.readline()
-            self.queue.put(text)
+            if s.inWaiting():
+                text = ser.readline()
+                self.queue.put(text)
 
 
 class Login(tk.Tk):
