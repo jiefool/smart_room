@@ -168,7 +168,7 @@ class Dashboard(tk.Tk):
         self.labelframe2.grid(row=1, column=3, columnspan=2, sticky='NESW')
 
         self.index = 0
-        while self.index<4
+        while self.index < 4:
             self.labelframe2.columnconfigure(index, weight=1)
             self.labelframe2.rowconfigure(index, weight=1)
             self.index = self.index + 1
