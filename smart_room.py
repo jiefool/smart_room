@@ -165,7 +165,7 @@ class Dashboard(tk.Tk):
 
 
         self.labelframe2 = tk.LabelFrame(self, text="Thermal Sensor Data")
-        self.labelframe2.grid(row=1, column=2, rowspan=2, columnspan=2, sticky='NESW')
+        self.labelframe2.grid(row=1, column=3, rowspan=2, columnspan=2, sticky='NESW')
 
         self.index = 0
         while self.index < 4:
@@ -184,7 +184,7 @@ class Dashboard(tk.Tk):
 
 
         self.labelframe3 = tk.LabelFrame(self, text="IRMS")
-        self.labelframe3.grid(row=3, column=2, sticky='NESW')
+        self.labelframe3.grid(row=3, column=3, sticky='NESW')
         self.labelframe3.columnconfigure(0, weight=1)
         self.labelframe3.rowconfigure(0, weight=1)
 
@@ -195,7 +195,7 @@ class Dashboard(tk.Tk):
 
 
         self.labelframe4 = tk.LabelFrame(self, text="Power(Watt)")
-        self.labelframe4.grid(row=3, column=3, sticky='NESW')
+        self.labelframe4.grid(row=3, column=4, sticky='NESW')
         self.labelframe4.columnconfigure(0, weight=1)
         self.labelframe4.rowconfigure(0, weight=1)
 
