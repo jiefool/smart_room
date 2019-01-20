@@ -298,6 +298,20 @@ class Dashboard(tk.Tk):
                 self.irms_text.set(self.data_split[0])
                 self.power_text.set(self.data_split[1])
                 self.sensor_data = self.data_split[2].split(",")
+
+                for widget in labelframe2.winfo_children():
+                    widget.destroy()
+
+
+                self.k = 0
+                for self.i in  range(4):
+                    for self.j in  range(4):
+                        tk.Button(self.labelframe2, text=str(sensor_data[self.k])).grid(row=int(self.i), column = int(self.j))
+                        self.j = self.j + 1
+                        self.k = self.k +1 
+                    self.i = self.i + 1
+
+
                 print self.sensor_data
             except Queue.Empty:
                 pass
