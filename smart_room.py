@@ -293,7 +293,12 @@ class Dashboard(tk.Tk):
             try:
                 # self.text.delete(1.0, 'end')
                 # self.text.insert('end', self.queue.get())
-                print self.queue.get()
+                self.serial_data = self.queue.get()
+                self.data_split = self.serial_data.split("|")
+                self.irms_text.set(self.data_split[0])
+                self.power_text.set(self.data_split[1])
+                self.sensor_data = self.data_split[2].split(",")
+                print self.sensor_data
             except Queue.Empty:
                 pass
         self.after(100, self.process_serial)
