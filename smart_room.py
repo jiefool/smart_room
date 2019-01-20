@@ -169,8 +169,8 @@ class Dashboard(tk.Tk):
 
         self.index = 0
         while self.index < 4:
-            self.labelframe2.columnconfigure(index, weight=1)
-            self.labelframe2.rowconfigure(index, weight=1)
+            self.labelframe2.columnconfigure(self.index, weight=1)
+            self.labelframe2.rowconfigure(self.index, weight=1)
             self.index = self.index + 1
 
         self.k = 1
