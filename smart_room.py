@@ -321,7 +321,8 @@ class Dashboard(tk.Tk):
         self.k = 0
         for self.i in  range(4):
             for self.j in  range(4):
-                tk.Button(self.labelframe2, text=str(self.thermal[self.k])).grid(row=int(self.i), column = int(self.j))
+                self.thermal_text = "*" if self.thermal[self.k] > 30 else str(self.thermal[self.k])
+                tk.Button(self.labelframe2, text=self.thermal_text).grid(row=int(self.i), column = int(self.j))
                 self.j = self.j + 1
                 self.k = self.k +1 
             self.i = self.i + 1
