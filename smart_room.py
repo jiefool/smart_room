@@ -189,7 +189,7 @@ class Dashboard(tk.Tk):
         self.labelframe3.rowconfigure(0, weight=1)
 
         self.irms_text = tk.StringVar()
-        self.irms_label = tk.Label(self.labelframe0, textvariable=self.irms_text)
+        self.irms_label = tk.Label(self.labelframe3, textvariable=self.irms_text)
         self.irms_label.grid(row=0, column=0, sticky='NESW')
 
 
