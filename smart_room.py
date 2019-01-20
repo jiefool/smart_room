@@ -133,35 +133,45 @@ class Dashboard(tk.Tk):
         self.override_btn = tk.Button(self.labelframe0, text='Override', command=self.override)
         self.override_btn.grid(row=0, column=0, columnspan=2, sticky='NESW')
 
+
+
         self.labelframe1 = tk.LabelFrame(self, text="Lights Control")
         self.labelframe1.grid(row=2, column=1, sticky='NESW')
+        self.labelframe1.columnconfigure(0, weight=1)
         self.labelframe1.columnconfigure(1, weight=1)
+        self.labelframe1.rowconfigure(0, weight=1)
+        self.labelframe1.rowconfigure(1, weight=1)
+        self.labelframe1.rowconfigure(2, weight=1)
 
         # self.login_label = Label(self.labelframe, text='Lights Control')
         # self.login_label.grid(row=2, column=0, sticky='NESW')
 
 
         self.light0_btn = tk.Button(self.labelframe1, text='Light 1', command=lambda:self.light_control(0) )
-        self.light0_btn.grid(row=0, column=0, columnspan=2,sticky='NESW')
+        self.light0_btn.grid(row=0, column=0, sticky='NESW')
 
         self.light1_btn = tk.Button(self.labelframe1, text='Light 2', command=lambda:self.light_control(1))
-        self.light1_btn.grid(row=1, column=0, columnspan=2, sticky='NESW')
+        self.light1_btn.grid(row=0, column=1, sticky='NESW')
 
         self.light2_btn = tk.Button(self.labelframe1, text='Light 3', command=lambda:self.light_control(2))
-        self.light2_btn.grid(row=2, column=0, columnspan=2, sticky='NESW')
+        self.light2_btn.grid(row=1, column=0, sticky='NESW')
 
         self.light3_btn = tk.Button(self.labelframe1, text='Light 4', command=lambda:self.light_control(3))
-        self.light3_btn.grid(row=3, column=0, columnspan=2, sticky='NESW')
+        self.light3_btn.grid(row=1, column=1, sticky='NESW')
 
         self.lightAll_btn = tk.Button(self.labelframe1, text='All Lights', command=lambda:self.light_control(4))
-        self.lightAll_btn.grid(row=4, column=0, columnspan=2, sticky='NESW')
+        self.lightAll_btn.grid(row=2, column=0, sticky='NESW')
 
 
 
         self.labelframe2 = tk.LabelFrame(self, text="Thermal Sensor Data")
         self.labelframe2.grid(row=1, column=3, columnspan=2, sticky='NESW')
-        self.labelframe2.columnconfigure(4, weight=1)
-        self.labelframe2.rowconfigure(4, weight=1)
+
+        self.index = 0
+        while self.index<4
+            self.labelframe2.columnconfigure(index, weight=1)
+            self.labelframe2.rowconfigure(index, weight=1)
+            self.index = self.index + 1
 
         self.k = 1
         for self.i in  range(4):
