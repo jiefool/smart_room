@@ -189,8 +189,8 @@ class Dashboard(tk.Tk):
         self.labelframe3.columnconfigure(0, weight=1)
         self.labelframe3.rowconfigure(0, weight=1)
 
-        self.irms_text = tk.StringVar()
-        self.irms_label = tk.Label(self.labelframe3, textvariable=self.irms_text)
+
+        self.irms_label = tk.Label(self.labelframe3, text="123")
         self.irms_label.grid(row=0, column=0, sticky='NESW')
         
 
@@ -200,8 +200,7 @@ class Dashboard(tk.Tk):
         self.labelframe4.columnconfigure(0, weight=1)
         self.labelframe4.rowconfigure(0, weight=1)
 
-        self.power_text = tk.StringVar()
-        self.power_label = tk.Label(self.labelframe4, textvariable=self.power_text)
+        self.power_label = tk.Label(self.labelframe4, text="123")
         self.power_label.grid(row=0, column=0, sticky='NESW')
 
 
@@ -312,6 +311,12 @@ class Dashboard(tk.Tk):
         print self.irms
         print self.power
         print self.thermal
+
+        self.irms_label = tk.Label(self.labelframe3, text=str(self.irms))
+        self.irms_label.grid(row=0, column=0, sticky='NESW')
+
+         self.power_label = tk.Label(self.labelframe4, text=str(self.power))
+        self.power_label.grid(row=0, column=0, sticky='NESW')
 
         for widget in self.labelframe2.winfo_children():
             widget.destroy()
