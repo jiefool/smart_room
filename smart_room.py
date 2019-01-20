@@ -13,7 +13,7 @@ class SerialThread(threading.Thread):
         self.queue = queue
     def run(self):
         while True:
-            if s.inWaiting():
+            if ser.inWaiting():
                 text = ser.readline()
                 self.queue.put(text)
 
