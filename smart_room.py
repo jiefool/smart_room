@@ -305,14 +305,14 @@ class Dashboard(tk.Tk):
 
     def process_serial_data(self, serial_data):
         self.data_split=serial_data.split("|")
-        self.irms = data_split[0]
-        self.power = data_split[1]
-        self.thermal = data_split[2]
+        self.irms = self.data_split[0]
+        self.power = self.data_split[1]
+        self.thermal = self.data_split[2]
 
         print self.irms
         print self.power
         print self.thermal
-        
+
         self.k = 1
         for self.i in  range(4):
             for self.j in  range(4):
