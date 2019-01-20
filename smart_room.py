@@ -300,7 +300,7 @@ class Dashboard(tk.Tk):
                 self.data_split = self.serial_data.split("|")
                 self.irms_text.set(self.data_split[0])
                 self.power_text.set(self.data_split[1])
-                self.sensor_data = self.data_split[2].split(",")
+                # self.sensor_data = self.data_split[2].split(",")
 
                 for self.widget in self.labelframe2.winfo_children():
                     self.widget.destroy()
