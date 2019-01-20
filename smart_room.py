@@ -315,7 +315,7 @@ class Dashboard(tk.Tk):
         self.irms_label = tk.Label(self.labelframe3, text=str(self.irms))
         self.irms_label.grid(row=0, column=0, sticky='NESW')
 
-         self.power_label = tk.Label(self.labelframe4, text=str(self.power))
+        self.power_label = tk.Label(self.labelframe4, text=str(self.power))
         self.power_label.grid(row=0, column=0, sticky='NESW')
 
         for widget in self.labelframe2.winfo_children():
