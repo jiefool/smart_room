@@ -306,8 +306,8 @@ class Dashboard(tk.Tk):
         self.power = self.data_split[1]
         self.thermal = self.data_split[2].split(",")
 
-        self.irms_text.set(self.irms)
-        self.power_text.set(self.power)
+        self.irms_text.set(str(self.irms))
+        self.power_text.set(str(self.power))
 
         print self.irms
         print self.power
