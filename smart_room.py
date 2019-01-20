@@ -200,7 +200,7 @@ class Dashboard(tk.Tk):
         self.labelframe4.rowconfigure(0, weight=1)
 
         self.power_text = tk.StringVar()
-        self.power_label = tk.Label(self.labelframe3, textvariable=self.power_text)
+        self.power_label = tk.Label(self.labelframe4, textvariable=self.power_text)
         self.power_label.grid(row=0, column=0, sticky='NESW')
         self.power_text.set("123")
 
