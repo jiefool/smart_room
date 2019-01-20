@@ -295,7 +295,7 @@ class Dashboard(tk.Tk):
                 # self.text.insert('end', self.queue.get())
                 self.serial_data = self.queue.get()
 
-                if not self.serial_data.strip()
+                if not self.serial_data.strip():
                     self.data_split = self.serial_data.split("|")
                     self.irms_text.set(self.data_split[0])
                     self.power_text.set(self.data_split[1])
