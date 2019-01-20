@@ -126,8 +126,8 @@ class Dashboard(tk.Tk):
 
         self.labelframe0 = tk.LabelFrame(self, text="Override System")
         self.labelframe0.grid(row=1, column=1, sticky='NESW')
-        self.labelframe0.columnconfigure(1, weight=1)
-        self.labelframe0.rowconfigure(1, weight=1)
+        self.labelframe0.columnconfigure(0, weight=1)
+        self.labelframe0.rowconfigure(0, weight=1)
 
 
         self.override_btn = tk.Button(self.labelframe0, text='Override', command=self.override)
