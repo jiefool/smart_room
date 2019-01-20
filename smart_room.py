@@ -131,12 +131,12 @@ class Dashboard(tk.Tk):
 
 
         self.override_btn = tk.Button(self.labelframe0, text='Override', command=self.override)
-        self.override_btn.grid(row=0, column=0, columnspan=2, sticky='NESW')
+        self.override_btn.grid(row=0, column=0, sticky='NESW')
 
 
 
         self.labelframe1 = tk.LabelFrame(self, text="Lights Control")
-        self.labelframe1.grid(row=2, column=1, sticky='NESW')
+        self.labelframe1.grid(row=2, column=1, rowspan=2, sticky='NESW')
         self.labelframe1.columnconfigure(0, weight=1)
         self.labelframe1.columnconfigure(1, weight=1)
         self.labelframe1.rowconfigure(0, weight=1)
@@ -165,7 +165,7 @@ class Dashboard(tk.Tk):
 
 
         self.labelframe2 = tk.LabelFrame(self, text="Thermal Sensor Data")
-        self.labelframe2.grid(row=1, column=3, columnspan=2, sticky='NESW')
+        self.labelframe2.grid(row=1, column=3, rowspan=2, sticky='NESW')
 
         self.index = 0
         while self.index < 4:
@@ -181,6 +181,16 @@ class Dashboard(tk.Tk):
                 self.k = self.k +1 
             self.i = self.i + 1
 
+
+
+        self.labelframe3 = tk.LabelFrame(self, text="IRMS")
+        self.labelframe3.grid(row=2, column=2, sticky='NESW')
+        self.labelframe3.columnconfigure(0, weight=1)
+        self.labelframe3.rowconfigure(0, weight=1)
+
+        self.irms_text = tk.StringVar()
+        self.irms_label = tk.Label(self.labelframe0, textvariable=self.irms_text)
+        self.irms_label.grid(row=0, column=0, sticky='NESW')
 
 
 
