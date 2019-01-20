@@ -307,16 +307,19 @@ class Dashboard(tk.Tk):
         self.data_split=serial_data.split("|")
         self.irms = self.data_split[0]
         self.power = self.data_split[1]
-        self.thermal = self.data_split[2]
+        self.thermal = self.data_split[2].split(",")
 
         print self.irms
         print self.power
         print self.thermal
 
-        self.k = 1
+        for widget in self.labelframe2.winfo_children():
+            widget.destroy()
+
+        self.k = 0
         for self.i in  range(4):
             for self.j in  range(4):
-                tk.Button(self.labelframe2, text=str(self.k)).grid(row=int(self.i), column = int(self.j))
+                tk.Button(self.labelframe2, text=str(self.thermal[self.k])).grid(row=int(self.i), column = int(self.j))
                 self.j = self.j + 1
                 self.k = self.k +1 
             self.i = self.i + 1
