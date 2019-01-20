@@ -315,7 +315,7 @@ class Dashboard(tk.Tk):
                     self.i = self.i + 1
 
 
-                print self.sensor_data
+                print self.data_split
                 # print self.serial_data
             except Queue.Empty:
                 pass
