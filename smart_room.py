@@ -192,7 +192,7 @@ class Dashboard(tk.Tk):
         self.irms_text = tk.StringVar()
         self.irms_label = tk.Label(self.labelframe3, textvariable=self.irms_text)
         self.irms_label.grid(row=0, column=0, sticky='NESW')
-        self.irms_text.set("123")
+        
 
 
         self.labelframe4 = tk.LabelFrame(self, text="Power(Watt)")
@@ -201,11 +201,8 @@ class Dashboard(tk.Tk):
         self.labelframe4.rowconfigure(0, weight=1)
 
         self.power_text = tk.StringVar()
-        self.power_label = tk.Label(self.labelframe4, text="123")
+        self.power_label = tk.Label(self.labelframe4, textvariable=self.power_text)
         self.power_label.grid(row=0, column=0, sticky='NESW')
-        self.power_text.set("123")
-
-
 
 
         # adds login button and defines its properties
@@ -308,6 +305,9 @@ class Dashboard(tk.Tk):
         self.irms = self.data_split[0]
         self.power = self.data_split[1]
         self.thermal = self.data_split[2].split(",")
+
+        self.irms_text.set(self.irms)
+        self.power_text.set(self.power)
 
         print self.irms
         print self.power
