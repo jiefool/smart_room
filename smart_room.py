@@ -294,25 +294,27 @@ class Dashboard(tk.Tk):
                 # self.text.delete(1.0, 'end')
                 # self.text.insert('end', self.queue.get())
                 self.serial_data = self.queue.get()
-                self.data_split = self.serial_data.split("|")
-                self.irms_text.set(self.data_split[0])
-                self.power_text.set(self.data_split[1])
-                self.sensor_data = self.data_split[2].split(",")
 
-                for widget in labelframe2.winfo_children():
-                    widget.destroy()
+                if not self.serial_data.strip()
+                    self.data_split = self.serial_data.split("|")
+                    self.irms_text.set(self.data_split[0])
+                    self.power_text.set(self.data_split[1])
+                    self.sensor_data = self.data_split[2].split(",")
 
-
-                self.k = 0
-                for self.i in  range(4):
-                    for self.j in  range(4):
-                        tk.Button(self.labelframe2, text=str(self.sensor_data[self.k])).grid(row=int(self.i), column = int(self.j))
-                        self.j = self.j + 1
-                        self.k = self.k +1 
-                    self.i = self.i + 1
+                    for widget in labelframe2.winfo_children():
+                        widget.destroy()
 
 
-                print self.sensor_data
+                    self.k = 0
+                    for self.i in  range(4):
+                        for self.j in  range(4):
+                            tk.Button(self.labelframe2, text=str(self.sensor_data[self.k])).grid(row=int(self.i), column = int(self.j))
+                            self.j = self.j + 1
+                            self.k = self.k +1 
+                        self.i = self.i + 1
+
+
+                    print self.sensor_data
             except Queue.Empty:
                 pass
         self.after(100, self.process_serial)
