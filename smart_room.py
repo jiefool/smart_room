@@ -31,7 +31,7 @@ class Login(tk.Tk):
         tk.Tk.__init__(self)
 
         self.title('Smart Room Login')
-        self.geometry('400x250')
+        self.geometry('600x450')
         self.rows = 0
         while self.rows < 10:
             self.rowconfigure(self.rows, weight=1)
