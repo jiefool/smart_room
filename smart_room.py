@@ -4,7 +4,13 @@ import Tkinter as tk ## notice capitalized T in Tkinter
 import time
 import threading
 import Queue
+import mysql.connector
 import serial
+import datetime as dt
+import tkMessageBox
+
+
+
 
 
 class SerialThread(threading.Thread):
@@ -89,7 +95,13 @@ class Login(tk.Tk):
         # If I wanted I could also pass the username and password I got above to another 
         # function from here.
 
-        if self.username_box.get() == 'admin' and self.password_box.get() == '1234':
+        mycursor.execute("SELECT * FROM users WHERE username='"+ self.username_box.get() +"' AND password='"+ self.password_box.get() +"'")
+        myresult = mycursor.fetchall()
+
+        self.row = len(myresult)
+
+
+        if self.row > 0:
             self.login_text.set("Credentials correct.")
             root2 = tk.Toplevel(self)
             smartRoomDashboard = Dashboard(root2)
@@ -116,7 +128,7 @@ class Dashboard(tk.Tk):
 
 
         self.title('Smart Room Dashboard')
-        self.geometry('400x350')
+        self.geometry('400x450')
 
         self.rows = 0
         while self.rows < 10:
@@ -204,15 +216,131 @@ class Dashboard(tk.Tk):
         self.power_label.grid(row=0, column=0, sticky='NESW')
 
 
-        # adds login button and defines its properties
+        #input class schedule
+        self.labelframe5 = tk.LabelFrame(self, text="Input Class Schedules")
+        self.labelframe5.grid(row=4, column=1, rowspan=1, columnspan=2, sticky='NESW')
+        self.labelframe5.columnconfigure(0, weight=1)
+        self.labelframe5.rowconfigure(0, weight=1)
+
+
+        self.DAY_OPTIONS = [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+        ]
+
+        self.sched_day = tk.StringVar(self)
+        self.sched_day.set(self.DAY_OPTIONS[0])
+
+        self.w_day = tk.OptionMenu(self.labelframe5, self.sched_day, *self.DAY_OPTIONS, command=self.day_selected)
+        self.w_day.grid(row=0, column=0, sticky='NESW')
+
+        self.Today= dt.datetime(2019,1,1,7)
+        self.date_list = [self.Today + dt.timedelta(minutes=30*x) for x in range(0, 31)]
+        self.TIME_OPTIONS = [x.strftime('%H:%M') for x in self.date_list]
+
+        self.sched_time = tk.StringVar(self)
+        self.sched_time.set(self.TIME_OPTIONS[0])
+
+        self.w_time = tk.OptionMenu(self.labelframe5, self.sched_time, *self.TIME_OPTIONS, command=self.time_start_selected)
+        self.w_time.grid(row=0, column=1, sticky='NESW')
+
+        self.sched_time = tk.StringVar(self)
+        self.sched_time.set(self.TIME_OPTIONS[0])
+
+        self.w_time = tk.OptionMenu(self.labelframe5, self.sched_time, *self.TIME_OPTIONS, command=self.time_end_selected)
+        self.w_time.grid(row=0, column=2, sticky='NESW')
+
+        self.add_sched = tk.Button(self.labelframe5, text='Add Schedule', command=self.save_sched)
+        self.add_sched.grid(row=1, column=0, columnspan=3, sticky='NESW')
+
+
+        #class schedules
+        self.labelframe6 = tk.LabelFrame(self, text="Class Schedules")
+        self.labelframe6.grid(row=4, column=3, rowspan=1, columnspan=2, sticky='NESW')
+        self.labelframe6.columnconfigure(0, weight=1)
+        self.labelframe6.rowconfigure(0, weight=1)
+
+        self.class_schedules()
+
+
         self.back_btn = tk.Button(self, text='Back', command=self.back)
-        self.back_btn.grid(row=5, column=1, columnspan=4, sticky='NESW')
+        self.back_btn.grid(row=6, column=1, columnspan=4, sticky='NESW')
 
 
         self.queue = Queue.Queue()
         thread = SerialThread(self.queue)
         thread.start()
         self.process_serial()
+
+    def save_sched(self):
+        self.query = "INSERT INTO class_schedules(day,start_time, end_time) " \
+                "VALUES(%s,%s,%s)"
+        self.args = (self.day_sched, self.time_start_sched, self.time_end_sched)
+        mycursor.execute(self.query, self.args)
+
+        if mycursor.lastrowid:
+            print('last insert id', mycursor.lastrowid)
+        else:
+            print('last insert id not found')
+        
+        mydb.commit()
+        self.class_schedules()
+
+    def class_schedules(self):
+        mycursor.execute("SELECT * FROM class_schedules")
+        myresult = mycursor.fetchall()
+
+        for child in self.labelframe6.winfo_children():
+            child.destroy()
+
+        self.lrow = 0;
+        for item in myresult:
+            if item in myresult:
+                self.day_label = tk.Label(self.labelframe6, text=str(item[1]))
+                self.day_label.grid(row=self.lrow, column=0, sticky='NESW')
+
+                self.time_start_label = tk.Label(self.labelframe6, text=str(item[2]))
+                self.time_start_label.grid(row=self.lrow, column=1, sticky='NESW')
+
+                self.time_end_label = tk.Label(self.labelframe6, text=str(item[3]))
+                self.time_end_label.grid(row=self.lrow, column=2, sticky='NESW')
+
+                self.button = tk.Button(self.labelframe6, text="Remove", command=lambda x=item: self.remove_sched(x[0]))
+                self.button.grid(row=self.lrow, column=3, sticky='NESW')
+                self.lrow += 1;
+
+        
+
+
+    def remove_sched(self, sched_id): 
+        print id
+        result = tkMessageBox.askyesno("Delete","Would you like delete this schedule?")
+        if(result):
+            sql = "DELETE FROM class_schedules WHERE id=%i" % sched_id
+            print sql
+            mycursor.execute(sql)
+            mydb.commit()
+            self.class_schedules()
+
+       
+
+
+
+    def day_selected(self, selected_day):
+        self.day_sched = selected_day
+
+
+    def time_start_selected(self, selected_time):
+        self.time_start_sched = selected_time
+
+    def time_end_selected(self, selected_time):
+        self.time_end_sched = selected_time
+        
 
     def light_control(self, light):
         if self.lt0 and self.lt1 and self.lt2 and self.lt3:
@@ -292,6 +420,7 @@ class Dashboard(tk.Tk):
                 # self.text.insert('end', self.queue.get())
                 self.serial_data = self.queue.get()
                 self.process_serial_data(self.serial_data)
+                self.check_time(self)
                 
                
                 # print self.serial_data
@@ -300,33 +429,34 @@ class Dashboard(tk.Tk):
         self.after(100, self.process_serial)
 
     def process_serial_data(self, serial_data):
-        self.data_split=serial_data.split("|")
-        self.irms = self.data_split[0]
-        self.power = self.data_split[1]
-        self.thermal = self.data_split[2].split(",")
+        if len(serial_data) > 0:
+            self.data_split=serial_data.split("|")
+            self.irms = self.data_split[0]
+            self.power = self.data_split[1]
+            self.thermal = self.data_split[2].split(",")
 
-        print self.irms
-        print self.power
-        print self.thermal
+            print self.irms
+            print self.power
+            print self.thermal
 
-        self.irms_label = tk.Label(self.labelframe3, text=str(self.irms))
-        self.irms_label.grid(row=0, column=0, sticky='NESW')
+            self.irms_label = tk.Label(self.labelframe3, text=str(self.irms))
+            self.irms_label.grid(row=0, column=0, sticky='NESW')
 
-        self.power_label = tk.Label(self.labelframe4, text=str(self.power))
-        self.power_label.grid(row=0, column=0, sticky='NESW')
+            self.power_label = tk.Label(self.labelframe4, text=str(self.power))
+            self.power_label.grid(row=0, column=0, sticky='NESW')
 
-        for widget in self.labelframe2.winfo_children():
-            widget.destroy()
+            for widget in self.labelframe2.winfo_children():
+                widget.destroy()
 
-        self.k = 0
-        for self.i in  range(4):
-            for self.j in  range(4):
-                # self.thermal_text = "*" if self.thermal[self.k] > 30 else str(self.thermal[self.k])
-                self.thermal_text = self.thermal[self.k]
-                tk.Button(self.labelframe2, text=self.thermal_text).grid(row=int(self.i), column = int(self.j))
-                self.j = self.j + 1
-                self.k = self.k +1 
-            self.i = self.i + 1
+            self.k = 0
+            for self.i in  range(4):
+                for self.j in  range(4):
+                    # self.thermal_text = "*" if self.thermal[self.k] > 30 else str(self.thermal[self.k])
+                    self.thermal_text = self.thermal[self.k]
+                    tk.Button(self.labelframe2, text=self.thermal_text).grid(row=int(self.i), column = int(self.j))
+                    self.j = self.j + 1
+                    self.k = self.k + 1 
+                self.i = self.i + 1
 
 def main():
     app = Login()
@@ -338,14 +468,26 @@ def main():
 
 if __name__ == '__main__':
 
-    ser = serial.Serial(
-        port='/dev/ttyUSB0',
-        baudrate=9600,
-        parity=serial.PARITY_NONE,
-        stopbits=serial.STOPBITS_ONE,
-        bytesize=serial.EIGHTBITS,
-        timeout=1
+    # ser = serial.Serial(
+    #     port='/dev/ttyUSB0',
+    #     baudrate=9600,
+    #     parity=serial.PARITY_NONE,
+    #     stopbits=serial.STOPBITS_ONE,
+    #     bytesize=serial.EIGHTBITS,
+    #     timeout=1
+    # )
+
+
+    mydb = mysql.connector.connect(
+      host="localhost",
+      user="root",
+      passwd='[nJu*b`x/+_"F3dk',
+      database="smart_room"
     )
+
+    mycursor = mydb.cursor()
+   
+
 
     main()         
         
