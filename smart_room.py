@@ -234,13 +234,13 @@ class Dashboard(tk.Tk):
 
 
         self.DAY_OPTIONS = [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "Sun"
         ]
 
         self.sched_day = tk.StringVar(self)
