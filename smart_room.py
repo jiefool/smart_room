@@ -438,6 +438,9 @@ class Dashboard(tk.Tk):
                 pass
         self.after(100, self.process_serial)
 
+    def check_time(self):
+        print "checking time"
+
     def process_serial_data(self, serial_data):
         if len(serial_data) > 0:
             self.data_split=serial_data.split("|")
