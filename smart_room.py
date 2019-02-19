@@ -430,7 +430,7 @@ class Dashboard(tk.Tk):
                 # self.text.insert('end', self.queue.get())
                 self.serial_data = self.queue.get()
                 self.process_serial_data(self.serial_data)
-                self.check_time(self)
+                self.check_time
                 
                
                 # print self.serial_data
