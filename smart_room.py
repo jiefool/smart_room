@@ -186,6 +186,16 @@ class Dashboard(tk.Tk):
             self.labelframe2.rowconfigure(self.index, weight=1)
             self.index = self.index + 1
 
+
+        self.labelframe2b = tk.LabelFrame(self, text="Thermal Sensor 2 Data")
+        self.labelframe2b.grid(row=1, column=5, rowspan=2, columnspan=2, sticky='NESW')
+
+        self.index = 0
+        while self.index < 4:
+            self.labelframe2b.columnconfigure(self.index, weight=1)
+            self.labelframe2b.rowconfigure(self.index, weight=1)
+            self.index = self.index + 1
+
         # self.k = 1
         # for self.i in  range(4):
         #     for self.j in  range(4):
