@@ -128,7 +128,7 @@ class Dashboard(tk.Tk):
 
 
         self.title('Smart Room Dashboard')
-        self.geometry('400x450')
+        self.geometry('600x450')
 
         self.rows = 0
         while self.rows < 10:
