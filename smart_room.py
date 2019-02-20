@@ -449,8 +449,13 @@ class Dashboard(tk.Tk):
         print c_year
         print c_month
         print c_day
-        # for item in  myresult:
-            # print item[0] + item[1]
+        for item in  myresult:
+            dt_string_start = "%d/%d/%d %s %s" % (c_year, c_month, c_day, item[0], item[1])
+            dt_string_end = "%d/%d/%d %s %s" % (c_year, c_month, c_day, item[0], item[1])
+            
+            print dt_string_start
+            print dt_string_end
+
             # datetime_object = datetime.strptime('Jun 1 2005  1:33PM', '%b %d %Y %I:%M%p')
 
 
