@@ -250,7 +250,7 @@ class Dashboard(tk.Tk):
         self.w_day.grid(row=0, column=0, sticky='NESW')
 
         self.Today= dt.datetime(2019,1,1,7)
-        self.date_list = [self.Today + dt.timedelta(minutes=30*x) for x in range(0, 31)]
+        self.date_list = [self.Today + dt.timedelta(minutes=60*x) for x in range(0, 31)]
         self.TIME_OPTIONS = [x.strftime('%H:%M') for x in self.date_list]
 
         self.sched_time = tk.StringVar(self)
