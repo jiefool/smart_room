@@ -460,8 +460,8 @@ class Dashboard(tk.Tk):
             print dt_string_end
 
             if c_day_name == item[1]:
-                dt_start = dt.strptime(dt_string_start, '%Y/%m/%d %H%H:%M%M:%S%S')
-                dt_end = dt.strptime(dt_string_end, '%Y/%m/%d %H%H:%M%M:%S%S')
+                dt_start = dt.datetime.strptime(dt_string_start, '%Y/%m/%d %H:%M:%S')
+                dt_end = dt.datetime.strptime(dt_string_end, '%Y/%m/%d %H:%M:%S')
                 print dt_start
                 print dt_end
 
