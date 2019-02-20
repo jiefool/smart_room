@@ -440,7 +440,7 @@ class Dashboard(tk.Tk):
     def check_time(self):
         mycursor.execute("SELECT * FROM class_schedules")
         myresult = mycursor.fetchall()
-        currentDT = datetime.datetime.now()
+        currentDT = dt.datetime.now()
         print (str(currentDT))
         for item in  myresult:
             print item[0] + item[1]
