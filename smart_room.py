@@ -442,6 +442,7 @@ class Dashboard(tk.Tk):
         print "checking time"
 
     def process_serial_data(self, serial_data):
+        print serial_data
         if len(serial_data) > 0:
             self.data_split=serial_data.split("|")
             self.irms = self.data_split[0]
@@ -475,18 +476,18 @@ class Dashboard(tk.Tk):
 
 
             if len(self.thermal2) > 0:
-                for widget in self.labelframe2b.winfo_children():
-                    widget.destroy()
+                # for widget in self.labelframe2b.winfo_children():
+                #     widget.destroy()
 
-                self.k = 0
-                for self.i in  range(4):
-                    for self.j in  range(4):
-                        # self.thermal_text = "*" if self.thermal[self.k] > 30 else str(self.thermal[self.k])
-                        self.thermal_text = self.thermal2[self.k]
-                        tk.Button(self.labelframe2b, text=self.thermal_text).grid(row=int(self.i), column = int(self.j))
-                        self.j = self.j + 1
-                        self.k = self.k + 1 
-                    self.i = self.i + 1
+                # self.k = 0
+                # for self.i in  range(4):
+                #     for self.j in  range(4):
+                #         # self.thermal_text = "*" if self.thermal[self.k] > 30 else str(self.thermal[self.k])
+                #         self.thermal_text = self.thermal2[self.k]
+                #         tk.Button(self.labelframe2b, text=self.thermal_text).grid(row=int(self.i), column = int(self.j))
+                #         self.j = self.j + 1
+                #         self.k = self.k + 1 
+                #     self.i = self.i + 1
 
 def main():
     app = Login()
