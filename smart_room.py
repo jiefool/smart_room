@@ -178,7 +178,7 @@ class Dashboard(tk.Tk):
 
 
         self.labelframe2 = tk.LabelFrame(self, text="Thermal Sensor Data")
-        self.labelframe2.grid(row=1, column=3, rowspan=2, columnspan=2, sticky='NESW')
+        self.labelframe2.grid(row=1, column=3, rowspan=2, columnspan=1, sticky='NESW')
 
         self.index = 0
         while self.index < 4:
@@ -188,7 +188,7 @@ class Dashboard(tk.Tk):
 
 
         self.labelframe2b = tk.LabelFrame(self, text="Thermal Sensor 2 Data")
-        self.labelframe2b.grid(row=1, column=5, rowspan=2, columnspan=2, sticky='NESW')
+        self.labelframe2b.grid(row=1, column=5, rowspan=2, columnspan=1, sticky='NESW')
 
         self.index = 0
         while self.index < 4:
@@ -430,7 +430,7 @@ class Dashboard(tk.Tk):
                 # self.text.insert('end', self.queue.get())
                 self.serial_data = self.queue.get()
                 self.process_serial_data(self.serial_data)
-                self.check_time
+                self.check_time()
                 
                
                 # print self.serial_data
