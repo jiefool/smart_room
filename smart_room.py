@@ -444,14 +444,14 @@ class Dashboard(tk.Tk):
         c_year = current_dt.year
         c_month = current_dt.month
         c_day = current_dt.day
-        c_day_name = current_dt.strftime("%c")
+        c_day_name = current_dt.strftime("%a")
 
         print str(current_dt)
         print c_year
         print c_month
         print c_day
         print c_day_name
-        
+
         for item in  myresult:
             dt_string_start = "%d/%d/%d %s %s" % (c_year, c_month, c_day, item[1], item[2])
             dt_string_end = "%d/%d/%d %s %s" % (c_year, c_month, c_day, item[1], item[3])
