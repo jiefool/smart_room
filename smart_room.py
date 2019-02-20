@@ -188,7 +188,7 @@ class Dashboard(tk.Tk):
 
 
         self.labelframe2b = tk.LabelFrame(self, text="Thermal Sensor 2 Data")
-        self.labelframe2b.grid(row=1, column=5, rowspan=2, columnspan=1, sticky='NESW')
+        self.labelframe2b.grid(row=1, column=4, rowspan=2, columnspan=1, sticky='NESW')
 
         self.index = 0
         while self.index < 4:
@@ -447,6 +447,7 @@ class Dashboard(tk.Tk):
             self.irms = self.data_split[0]
             self.power = self.data_split[1]
             self.thermal = self.data_split[2].split(",")
+            self.thermal2 = self.data_split[3].split(",")
 
             print self.irms
             print self.power
@@ -467,6 +468,20 @@ class Dashboard(tk.Tk):
                     # self.thermal_text = "*" if self.thermal[self.k] > 30 else str(self.thermal[self.k])
                     self.thermal_text = self.thermal[self.k]
                     tk.Button(self.labelframe2, text=self.thermal_text).grid(row=int(self.i), column = int(self.j))
+                    self.j = self.j + 1
+                    self.k = self.k + 1 
+                self.i = self.i + 1
+
+
+            for widget in self.labelframe2b.winfo_children():
+                widget.destroy()
+
+            self.k = 0
+            for self.i in  range(4):
+                for self.j in  range(4):
+                    # self.thermal_text = "*" if self.thermal[self.k] > 30 else str(self.thermal[self.k])
+                    self.thermal_text = self.thermal[self.k]
+                    tk.Button(self.labelframe2b, text=self.thermal_text).grid(row=int(self.i), column = int(self.j))
                     self.j = self.j + 1
                     self.k = self.k + 1 
                 self.i = self.i + 1
