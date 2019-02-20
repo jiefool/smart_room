@@ -468,7 +468,7 @@ class Dashboard(tk.Tk):
                     self.send_command("OV0")
                 else:
                     print "send override true"
-                    self.send_command("OV0")
+                    self.send_command("OV1")
 
 
     def process_serial_data(self, serial_data):
