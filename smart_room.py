@@ -462,8 +462,8 @@ class Dashboard(tk.Tk):
             if c_day_name == item[1]:
                 dt_start = dt.datetime.strptime(dt_string_start, '%Y/%m/%d %H:%M:%S')
                 dt_end = dt.datetime.strptime(dt_string_end, '%Y/%m/%d %H:%M:%S')
-                print dt_start
-                print dt_end
+                if dt_start >= current_dt and current_dt <= dt_end 
+                    print "send override"
 
 
     def process_serial_data(self, serial_data):
