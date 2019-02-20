@@ -461,33 +461,34 @@ class Dashboard(tk.Tk):
             self.power_label = tk.Label(self.labelframe4, text=str(self.power))
             self.power_label.grid(row=0, column=0, sticky='NESW')
 
-            for widget in self.labelframe2.winfo_children():
-                widget.destroy()
+            if len(self.thermal) == 12:
+                for widget in self.labelframe2.winfo_children():
+                    widget.destroy()
 
-            self.k = 0
-            for self.i in  range(4):
-                for self.j in  range(4):
-                    # self.thermal_text = "*" if self.thermal[self.k] > 30 else str(self.thermal[self.k])
-                    self.thermal_text = self.thermal[self.k]
-                    tk.Button(self.labelframe2, text=self.thermal_text).grid(row=int(self.i), column = int(self.j))
-                    self.j = self.j + 1
-                    self.k = self.k + 1 
-                self.i = self.i + 1
+                self.k = 0
+                for self.i in  range(4):
+                    for self.j in  range(4):
+                        # self.thermal_text = "*" if self.thermal[self.k] > 30 else str(self.thermal[self.k])
+                        self.thermal_text = self.thermal[self.k]
+                        tk.Button(self.labelframe2, text=self.thermal_text).grid(row=int(self.i), column = int(self.j))
+                        self.j = self.j + 1
+                        self.k = self.k + 1 
+                    self.i = self.i + 1
 
 
-            # if len(self.thermal2) > 0:
-                # for widget in self.labelframe2b.winfo_children():
-                #     widget.destroy()
+            if len(self.thermal2) == 12:
+                for widget in self.labelframe2b.winfo_children():
+                    widget.destroy()
 
-                # self.k = 0
-                # for self.i in  range(4):
-                #     for self.j in  range(4):
-                #         # self.thermal_text = "*" if self.thermal[self.k] > 30 else str(self.thermal[self.k])
-                #         self.thermal_text = self.thermal2[self.k]
-                #         tk.Button(self.labelframe2b, text=self.thermal_text).grid(row=int(self.i), column = int(self.j))
-                #         self.j = self.j + 1
-                #         self.k = self.k + 1 
-                #     self.i = self.i + 1
+                self.k = 0
+                for self.i in  range(4):
+                    for self.j in  range(4):
+                        # self.thermal_text = "*" if self.thermal[self.k] > 30 else str(self.thermal[self.k])
+                        self.thermal_text = self.thermal2[self.k]
+                        tk.Button(self.labelframe2b, text=self.thermal_text).grid(row=int(self.i), column = int(self.j))
+                        self.j = self.j + 1
+                        self.k = self.k + 1 
+                    self.i = self.i + 1
 
 def main():
     app = Login()
