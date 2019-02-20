@@ -461,7 +461,7 @@ class Dashboard(tk.Tk):
             self.power_label = tk.Label(self.labelframe4, text=str(self.power))
             self.power_label.grid(row=0, column=0, sticky='NESW')
 
-            if len(self.thermal) == 12:
+            if len(self.thermal) == 16:
                 for widget in self.labelframe2.winfo_children():
                     widget.destroy()
 
@@ -476,7 +476,7 @@ class Dashboard(tk.Tk):
                     self.i = self.i + 1
 
 
-            if len(self.thermal2) == 12:
+            if len(self.thermal2) == 16:
                 for widget in self.labelframe2b.winfo_children():
                     widget.destroy()
 
