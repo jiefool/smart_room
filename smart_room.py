@@ -310,19 +310,18 @@ class Dashboard(tk.Tk):
 
         self.lrow = 0;
         for item in myresult:
-            if item in myresult:
-                self.day_label = tk.Label(self.labelframe6, text=str(item[1]))
-                self.day_label.grid(row=self.lrow, column=0, sticky='NESW')
+            self.day_label = tk.Label(self.labelframe6, text=str(item[1]))
+            self.day_label.grid(row=self.lrow, column=0, sticky='NESW')
 
-                self.time_start_label = tk.Label(self.labelframe6, text=str(item[2]))
-                self.time_start_label.grid(row=self.lrow, column=1, sticky='NESW')
+            self.time_start_label = tk.Label(self.labelframe6, text=str(item[2]))
+            self.time_start_label.grid(row=self.lrow, column=1, sticky='NESW')
 
-                self.time_end_label = tk.Label(self.labelframe6, text=str(item[3]))
-                self.time_end_label.grid(row=self.lrow, column=2, sticky='NESW')
+            self.time_end_label = tk.Label(self.labelframe6, text=str(item[3]))
+            self.time_end_label.grid(row=self.lrow, column=2, sticky='NESW')
 
-                self.button = tk.Button(self.labelframe6, text="Remove", command=lambda x=item: self.remove_sched(x[0]))
-                self.button.grid(row=self.lrow, column=3, sticky='NESW')
-                self.lrow += 1;
+            self.button = tk.Button(self.labelframe6, text="Remove", command=lambda x=item: self.remove_sched(x[0]))
+            self.button.grid(row=self.lrow, column=3, sticky='NESW')
+            self.lrow += 1;
 
         
 
