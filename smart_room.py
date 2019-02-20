@@ -438,7 +438,14 @@ class Dashboard(tk.Tk):
         self.after(100, self.process_serial)
 
     def check_time(self):
-        print "checking time"
+        mycursor.execute("SELECT * FROM class_schedules")
+        myresult = mycursor.fetchall()
+        currentDT = datetime.datetime.now()
+        print (str(currentDT))
+        for item in  myresult:
+            print item[0] + item[1]
+            # datetime_object = datetime.strptime('Jun 1 2005  1:33PM', '%b %d %Y %I:%M%p')
+
 
     def process_serial_data(self, serial_data):
         print serial_data
