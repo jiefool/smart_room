@@ -475,7 +475,7 @@ class Dashboard(tk.Tk):
                 self.i = self.i + 1
 
 
-            if len(self.thermal2) > 0:
+            # if len(self.thermal2) > 0:
                 # for widget in self.labelframe2b.winfo_children():
                 #     widget.destroy()
 
