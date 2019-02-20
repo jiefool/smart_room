@@ -450,9 +450,9 @@ class Dashboard(tk.Tk):
         print c_month
         print c_day
         for item in  myresult:
-            dt_string_start = "%d/%d/%d %s %s" % (c_year, c_month, c_day, item[0], item[1])
-            dt_string_end = "%d/%d/%d %s %s" % (c_year, c_month, c_day, item[0], item[1])
-            
+            dt_string_start = "%d/%d/%d %s %s" % (c_year, c_month, c_day, item[1], item[2])
+            dt_string_end = "%d/%d/%d %s %s" % (c_year, c_month, c_day, item[1], item[3])
+
             print dt_string_start
             print dt_string_end
 
