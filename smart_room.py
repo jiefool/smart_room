@@ -125,6 +125,7 @@ class Dashboard(tk.Tk):
         self.lt3 = False
         self.lt4 = False
         self.overridest = False
+        self.adminpass = ""
 
 
         self.title('Smart Room Dashboard')
@@ -228,7 +229,7 @@ class Dashboard(tk.Tk):
 
         #input class schedule
         self.labelframe5 = tk.LabelFrame(self, text="Input Class Schedules")
-        self.labelframe5.grid(row=4, column=1, rowspan=1, columnspan=2, sticky='NESW')
+        self.labelframe5.grid(row=4, column=1, rowspan=2, columnspan=2, sticky='NESW')
         self.labelframe5.columnconfigure(0, weight=1)
         self.labelframe5.rowconfigure(0, weight=1)
 
@@ -271,7 +272,7 @@ class Dashboard(tk.Tk):
 
         #class schedules
         self.labelframe6 = tk.LabelFrame(self, text="Class Schedules")
-        self.labelframe6.grid(row=4, column=3, rowspan=1, columnspan=1, sticky='NESW')
+        self.labelframe6.grid(row=4, column=3, rowspan=2, columnspan=1, sticky='NESW')
         self.labelframe6.columnconfigure(0, weight=1)
         self.labelframe6.rowconfigure(0, weight=1)
 
@@ -295,11 +296,12 @@ class Dashboard(tk.Tk):
         self.passframe.rowconfigure(0, weight=1)
         self.passframe.rowconfigure(1, weight=1)
 
-        self.username_box = tk.Entry(self.passframe)
-        self.username_box.insert(0, '')
-        self.username_box.grid(row=0, column=0, sticky='NESW')
+        getpass()
+        self.passentry = tk.Entry(self.passframe)
+        self.passentry.insert(0, self.adminpass)
+        self.passentry.grid(row=0, column=0, sticky='NESW')
 
-        self.changepass_btn = tk.Button(self.passframe, text='Back', command=self.setpass)
+        self.changepass_btn = tk.Button(self.passframe, text='Set Pass', command=self.setpass)
         self.changepass_btn.grid(row=1, column=0, columnspan=1, sticky='NESW')
 
 
@@ -315,6 +317,16 @@ class Dashboard(tk.Tk):
 
     def setpass(self):
         print "set pass"
+        self.query = "UPDATE `users` SET `password` = `%s' WHERE username='admin'"
+        self.args = (self.passentry)
+        mycursor.execute(self.query, self.args)
+        mydb.commit()
+
+    def getpass(self):
+        mycursor.execute("SELECT * FROM users")
+        myresult = mycursor.fetchall()
+        for item in myresult:
+            self.adminpass = item[2]
 
     def save_sched(self):
         self.query = "INSERT INTO class_schedules(day,start_time, end_time) " \
