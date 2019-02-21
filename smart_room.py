@@ -161,10 +161,10 @@ class Dashboard(tk.Tk):
         # self.login_label.grid(row=2, column=0, sticky='NESW')
 
 
-        self.light0_btn = tk.Button(self.labelframe1, text='Light 1', command=lambda:self.light_control(0) )
+        self.light0_btn = tk.Button(self.labelframe1, text='AC 1', command=lambda:self.light_control(0) )
         self.light0_btn.grid(row=0, column=0, sticky='NESW')
 
-        self.light1_btn = tk.Button(self.labelframe1, text='Light 2', command=lambda:self.light_control(1))
+        self.light1_btn = tk.Button(self.labelframe1, text='AC 2', command=lambda:self.light_control(1))
         self.light1_btn.grid(row=0, column=1, sticky='NESW')
 
         self.light2_btn = tk.Button(self.labelframe1, text='Light 3', command=lambda:self.light_control(2))
@@ -175,6 +175,9 @@ class Dashboard(tk.Tk):
 
         self.lightAll_btn = tk.Button(self.labelframe1, text='All Lights', command=lambda:self.light_control(4))
         self.lightAll_btn.grid(row=2, column=0, sticky='NESW')
+
+        self.lightAll_btn = tk.Button(self.labelframe1, text='All Aircons', command=lambda:self.light_control(5))
+        self.lightAll_btn.grid(row=2, column=1, sticky='NESW')
 
 
 
@@ -439,19 +442,37 @@ class Dashboard(tk.Tk):
 
         #light all
         elif light == 4 and self.lt4 == False:
-            self.lt0 = True
-            self.lt1 = True
+            # self.lt0 = True
+            # self.lt1 = True
             self.lt2 = True
             self.lt3 = True
             self.lt4 = True
             self.send_command("LT41")
         elif light == 4 and self.lt4 == True:
-            self.lt0 = False
-            self.lt1 = False
+            # self.lt0 = False
+            # self.lt1 = False
             self.lt2 = False
             self.lt3 = False
             self.lt4 = False
             self.send_command("LT40")
+
+        #light aircon
+        elif light == 5 and self.lt5 == False:
+            self.lt0 = True
+            self.lt1 = True
+            # self.lt2 = True
+            # self.lt3 = True
+            # self.lt4 = True
+            self.lt5 = True
+            self.send_command("LT51")
+        elif light == 5 and self.lt5 == True:
+            self.lt0 = False
+            self.lt1 = False
+            # self.lt2 = False
+            # self.lt3 = False
+            # self.lt4 = False
+            self.lt5 = False
+            self.send_command("LT50")
 
     def override(self):
         if (self.overridest):
