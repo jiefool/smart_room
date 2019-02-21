@@ -354,7 +354,7 @@ class Dashboard(tk.Tk):
             self.day_label = tk.Label(self.labelframe6, text=str(item[1]))
             self.day_label.grid(row=self.lrow, column=0, sticky='NESW')
 
-            starttime = dt.datetime.strftime(item[2], '%H:%M')
+            starttime = self.strfdelta(delta_obj, "{hours}:{minutes}")
             self.time_start_label = tk.Label(self.labelframe6, text=starttime)
             self.time_start_label.grid(row=self.lrow, column=1, sticky='NESW')
 
@@ -366,7 +366,11 @@ class Dashboard(tk.Tk):
             self.lrow += 1;
 
         
-
+    def strfdelta(self, tdelta, fmt):
+        d = {"days": tdelta.days}
+        d["hours"], rem = divmod(tdelta.seconds, 3600)
+        d["minutes"], d["seconds"] = divmod(rem, 60)
+        return fmt.format(**d)
 
     def remove_sched(self, sched_id): 
         print id
