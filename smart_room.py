@@ -403,10 +403,15 @@ class Dashboard(tk.Tk):
         
 
     def light_control(self, light):
-        if self.lt0 and self.lt1 and self.lt2 and self.lt3:
+        if  self.lt2 and self.lt3:
             self.lt4 = True
         else:
             self.lt4 = False
+
+        if  self.lt0 and self.lt1:
+            self.lt5 = True
+        else:
+            self.lt5 = False
 
 
         #light 1
