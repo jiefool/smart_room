@@ -280,13 +280,13 @@ class Dashboard(tk.Tk):
 
         #temperature
         self.tempframe = tk.LabelFrame(self, text="Temperature")
-        self.tempframe.grid(row=4, column=3, rowspan=1, columnspan=1, sticky='NESW')
+        self.tempframe.grid(row=4, column=4, rowspan=1, columnspan=1, sticky='NESW')
         self.tempframe.columnconfigure(0, weight=1)
         self.tempframe.rowconfigure(0, weight=1)
 
         self.temp_label = tk.Label(self.tempframe, text="123")
         self.temp_label.grid(row=0, column=0, sticky='NESW')
-        
+
 
         self.back_btn = tk.Button(self, text='Back', command=self.back)
         self.back_btn.grid(row=6, column=1, columnspan=4, sticky='NESW')
