@@ -502,7 +502,7 @@ class Dashboard(tk.Tk):
             self.power_label = tk.Label(self.labelframe4, text=str(self.power))
             self.power_label.grid(row=0, column=0, sticky='NESW')
 
-            self.temp_label = tk.Label(self.labelframe4, text=str(self.temp))
+            self.temp_label = tk.Label(self.tempframe, text=str(self.temp))
             self.temp_label.grid(row=0, column=0, sticky='NESW')
 
             if len(self.thermal) == 16:
