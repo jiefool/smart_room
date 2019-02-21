@@ -489,6 +489,7 @@ class Dashboard(tk.Tk):
             self.power = self.data_split[1]
             self.thermal = self.data_split[2].split(",")
             self.thermal2 = self.data_split[3].split(",")
+            self.temp = self.data_split[4]
 
             print self.irms
             print self.power
@@ -500,6 +501,9 @@ class Dashboard(tk.Tk):
 
             self.power_label = tk.Label(self.labelframe4, text=str(self.power))
             self.power_label.grid(row=0, column=0, sticky='NESW')
+
+            self.temp_label = tk.Label(self.labelframe4, text=str(self.temp))
+            self.temp_label.grid(row=0, column=0, sticky='NESW')
 
             if len(self.thermal) == 16:
                 for widget in self.labelframe2.winfo_children():
