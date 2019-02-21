@@ -288,6 +288,22 @@ class Dashboard(tk.Tk):
         self.temp_label.grid(row=0, column=0, sticky='NESW')
 
 
+        #password
+        self.passframe = tk.LabelFrame(self, text="Set Password")
+        self.passframe.grid(row=5, column=4, rowspan=1, columnspan=1, sticky='NESW')
+        self.passframe.columnconfigure(0, weight=1)
+        self.passframe.rowconfigure(0, weight=1)
+        self.passframe.rowconfigure(1, weight=1)
+
+        self.username_box = tk.Entry(self.passframe)
+        self.username_box.insert(0, '')
+        self.username_box.grid(row=0, column=0, sticky='NESW')
+
+        self.changepass_btn = tk.Button(self.passframe, text='Back', command=self.setpass)
+        self.changepass_btn.grid(row=1, column=0, columnspan=1, sticky='NESW')
+
+
+        #back button
         self.back_btn = tk.Button(self, text='Back', command=self.back)
         self.back_btn.grid(row=6, column=1, columnspan=4, sticky='NESW')
 
@@ -296,6 +312,9 @@ class Dashboard(tk.Tk):
         thread = SerialThread(self.queue)
         thread.start()
         self.process_serial()
+
+    def setpass(self):
+        print "set pass"
 
     def save_sched(self):
         self.query = "INSERT INTO class_schedules(day,start_time, end_time) " \
