@@ -168,10 +168,10 @@ class Dashboard(tk.Tk):
         self.light1_btn = tk.Button(self.labelframe1, text='AC 2', command=lambda:self.light_control(1))
         self.light1_btn.grid(row=0, column=1, sticky='NESW')
 
-        self.light2_btn = tk.Button(self.labelframe1, text='Light 3', command=lambda:self.light_control(2))
+        self.light2_btn = tk.Button(self.labelframe1, text='Light 1', command=lambda:self.light_control(2))
         self.light2_btn.grid(row=1, column=0, sticky='NESW')
 
-        self.light3_btn = tk.Button(self.labelframe1, text='Light 4', command=lambda:self.light_control(3))
+        self.light3_btn = tk.Button(self.labelframe1, text='Light 2', command=lambda:self.light_control(3))
         self.light3_btn.grid(row=1, column=1, sticky='NESW')
 
         self.lightAll_btn = tk.Button(self.labelframe1, text='All Lights', command=lambda:self.light_control(4))
