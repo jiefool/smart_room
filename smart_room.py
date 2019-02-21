@@ -354,7 +354,7 @@ class Dashboard(tk.Tk):
             self.day_label = tk.Label(self.labelframe6, text=str(item[1]))
             self.day_label.grid(row=self.lrow, column=0, sticky='NESW')
 
-            starttime = self.strfdelta(delta_obj, "{hours}:{minutes}")
+            starttime = self.strfdelta(item[2], "{hours}:{minutes}")
             self.time_start_label = tk.Label(self.labelframe6, text=starttime)
             self.time_start_label.grid(row=self.lrow, column=1, sticky='NESW')
 
