@@ -318,7 +318,7 @@ class Dashboard(tk.Tk):
     def setpass(self):
         print "set pass"
         self.query = "UPDATE users SET password = %s WHERE username = %s "
-        self.args = (self.passentry, "admin")
+        self.args = (self.passentry.get(), "admin")
         mycursor.execute(self.query, self.args)
         mydb.commit()
 
