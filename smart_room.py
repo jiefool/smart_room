@@ -124,6 +124,7 @@ class Dashboard(tk.Tk):
         self.lt2 = False
         self.lt3 = False
         self.lt4 = False
+        self.lt5 = False
         self.overridest = False
         self.adminpass = ""
 
