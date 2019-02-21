@@ -296,7 +296,7 @@ class Dashboard(tk.Tk):
         self.passframe.rowconfigure(0, weight=1)
         self.passframe.rowconfigure(1, weight=1)
 
-        getpass()
+        self.getpass()
         self.passentry = tk.Entry(self.passframe)
         self.passentry.insert(0, self.adminpass)
         self.passentry.grid(row=0, column=0, sticky='NESW')
