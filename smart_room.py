@@ -356,11 +356,11 @@ class Dashboard(tk.Tk):
 
             starttime = self.strfdelta(item[2], "{hours}:{minutes}")
             self.time_start_label = tk.Label(self.labelframe6, text=starttime)
-            self.time_start_label.grid(row=self.lrow, column=1, sticky='NES')
+            self.time_start_label.grid(row=self.lrow, column=1, sticky='NSW')
 
             endtime = self.strfdelta(item[3], "{hours}:{minutes}")
             self.time_end_label = tk.Label(self.labelframe6, text=endtime)
-            self.time_end_label.grid(row=self.lrow, column=2, sticky='NES')
+            self.time_end_label.grid(row=self.lrow, column=2, sticky='NSW')
 
             self.button = tk.Button(self.labelframe6, text="Remove", command=lambda x=item: self.remove_sched(x[0]))
             self.button.grid(row=self.lrow, column=3, sticky='NESW')
